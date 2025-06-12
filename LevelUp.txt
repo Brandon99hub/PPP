@@ -80,7 +80,7 @@ end)
 
 -- ✅ 4. No Clip (activar con tecla N)
 local uis = game:GetService("UserInputService")
-local noclip = false
+spawn(function()
 
 uis.InputBegan:Connect(function(key)
 	if key.KeyCode == Enum.KeyCode.N then
