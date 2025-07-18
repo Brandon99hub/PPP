@@ -2,6 +2,8 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
+import tkinter as tk
+from tkinter import ttk, messagebox
 
 
 def clean_temp():
@@ -40,14 +42,108 @@ def defrag_drive(drive="C:"):
         print(f"Defrag exited with error: {e}")
 
 
+def optimize_ram():
+    """Placeholder for RAM optimization steps."""
+    print("RAM optimization not implemented.")
+
+
+def optimize_cpu():
+    """Placeholder for CPU tuning."""
+    print("CPU optimization not implemented.")
+
+
+def optimize_gpu():
+    """Placeholder for GPU tuning."""
+    print("GPU optimization not implemented.")
+
+
+def optimize_windows():
+    """Placeholder for general Windows tweaks."""
+    print("General Windows optimization not implemented.")
+
+
+def optimize_antivirus():
+    """Placeholder for antivirus updates/optimization."""
+    print("Antivirus optimization not implemented.")
+
+
+def disable_animations():
+    """Placeholder for disabling Windows animations."""
+    print("Disable animations not implemented.")
+
+
+def increase_fps():
+    """Placeholder for FPS enhancements (e.g., game mode)."""
+    print("FPS optimization not implemented.")
+
+
+def optimize_wifi():
+    """Placeholder for WiFi settings adjustment."""
+    print("WiFi optimization not implemented.")
+
+
+def overclock_system():
+    """Placeholder for overclocking using vendor tools."""
+    print("Overclocking not implemented. Use manufacturer utilities.")
+
+
 def main():
-    print("Cleaning temporary files...")
-    clean_temp()
-    print("Running Disk Cleanup...")
-    run_disk_cleanup()
-    print("Defragmenting drive C...")
-    defrag_drive("C:")
-    print("Optimization tasks complete.")
+    """Launch a basic GUI for selecting optimization tasks."""
+    root = tk.Tk()
+    root.title("Windows Optimizer")
+    root.resizable(False, False)
+
+    options = {
+        "Clean temporary files": tk.BooleanVar(value=True),
+        "Run Disk Cleanup": tk.BooleanVar(value=False),
+        "Defragment drive C": tk.BooleanVar(value=False),
+        "Optimize RAM": tk.BooleanVar(value=False),
+        "Optimize CPU": tk.BooleanVar(value=False),
+        "Optimize GPU": tk.BooleanVar(value=False),
+        "Optimize Windows": tk.BooleanVar(value=False),
+        "Optimize Antivirus": tk.BooleanVar(value=False),
+        "Disable animations": tk.BooleanVar(value=False),
+        "Increase FPS": tk.BooleanVar(value=False),
+        "Optimize WiFi": tk.BooleanVar(value=False),
+        "Overclock system": tk.BooleanVar(value=False),
+    }
+
+    frame = ttk.Frame(root, padding=10)
+    frame.pack()
+
+    for text, var in options.items():
+        ttk.Checkbutton(frame, text=text, variable=var).pack(anchor="w")
+
+    def start_optimization():
+        if options["Clean temporary files"].get():
+            clean_temp()
+        if options["Run Disk Cleanup"].get():
+            run_disk_cleanup()
+        if options["Defragment drive C"].get():
+            defrag_drive("C:")
+        if options["Optimize RAM"].get():
+            optimize_ram()
+        if options["Optimize CPU"].get():
+            optimize_cpu()
+        if options["Optimize GPU"].get():
+            optimize_gpu()
+        if options["Optimize Windows"].get():
+            optimize_windows()
+        if options["Optimize Antivirus"].get():
+            optimize_antivirus()
+        if options["Disable animations"].get():
+            disable_animations()
+        if options["Increase FPS"].get():
+            increase_fps()
+        if options["Optimize WiFi"].get():
+            optimize_wifi()
+        if options["Overclock system"].get():
+            overclock_system()
+
+        messagebox.showinfo("Windows Optimizer", "Selected optimizations complete.")
+
+    ttk.Button(frame, text="Optimize", command=start_optimization).pack(pady=5)
+    root.mainloop()
 
 
 if __name__ == "__main__":
